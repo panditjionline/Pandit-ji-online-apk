@@ -1,0 +1,15 @@
+[
+  {
+    "id": "PJO-TEST01",
+    "serviceId": "kundali-paramarsh",
+    "serviceName": "Personal Consultation & Kundali Analysis",
+    "bookingType": "online_sankalp",
+    "date": "2026-10-19",
+    "timeSlot": "11:45 AM - अभिजित मुहूर्त",
+    "yajmanName": "राजेश कुमार",
+    "gotra": "कश्यप",
+    "phone": "9897123456",
+    "status": "confirmed",
+    "createdAt": "2026-10-18T13:29:00Z"
+  }
+]
