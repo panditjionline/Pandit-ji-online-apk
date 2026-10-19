@@ -196,17 +196,17 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="w-full border-t border-amber-900/30 bg-[#0d1322]/95 px-2 sm:px-4 overflow-x-auto scrollbar-none">
         <div className="max-w-7xl mx-auto flex items-center gap-1.5 sm:gap-2 py-1.5">
           {[
-            { id: 'home', label: 'Home & Tyohar', hindi: 'आज का पर्व व पंचांग' },
-            { id: 'chat', label: 'Pt. Shashank AI', hindi: 'परामर्श चैटबॉट', highlight: true },
-            { id: 'jaap', label: 'Mantra Jaap', hindi: '108 जप काउंटर', highlight: true },
-            { id: 'janam-kundali', label: 'Sampurn Kundali', hindi: 'सम्पूर्ण जन्म कुंडली', highlight: true },
-            { id: 'milan', label: 'Kundali Milan', hindi: '36 गुण मिलान', highlight: true },
-            { id: 'youtube', label: 'YouTube', hindi: 'यूट्यूब वीडियो' },
-            { id: 'services', label: 'Puja Booking', hindi: 'पूजा सेवा (रुद्रपुर)' },
+            { id: 'home', label: 'मुख्य पृष्ठ', sub: 'पंचांग व पर्व' },
+            { id: 'janam-kundali', label: 'सम्पूर्ण जन्म कुंडली', sub: 'सटीक जन्म पत्री', highlight: true },
+            { id: 'milan', label: '36 गुण मिलान', sub: 'वर-कन्या मिलान', highlight: true },
+            { id: 'jaap', label: 'मंत्र जप माला', sub: '108 जप काउंटर', highlight: true },
+            { id: 'chat', label: 'पण्डित जी AI', sub: 'ज्योतिष परामर्श', highlight: true },
+            { id: 'services', label: 'पूजा सेवाएं', sub: 'रुद्रपुर व ₹100 परामर्श' },
+            { id: 'youtube', label: 'यूट्यूब', sub: 'कथा व आरती वीडियो' },
             {
               id: 'history',
-              label: currentUser ? `मेरा डेटा (${currentUser.phone.slice(-4)})` : 'मेरा डेटा / हिस्ट्री',
-              hindi: 'चैट, जप व हिस्ट्री डिलीट',
+              label: currentUser ? `मेरा डेटा (${currentUser.phone.slice(-4)})` : 'मेरा डेटा / खाता',
+              sub: 'निजी रिकॉर्ड व डिलीट',
               highlight: true,
               isHistoryTab: true,
             },
@@ -217,24 +217,24 @@ export const Header: React.FC<HeaderProps> = ({
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-shrink-0 px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all relative flex flex-col items-center cursor-pointer ${
+                className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all relative flex flex-col items-center cursor-pointer ${
                   isActive
-                    ? 'text-amber-200 bg-amber-600/20 border border-amber-500/40 font-semibold shadow-inner'
+                    ? 'text-yellow-300 bg-amber-500/25 border border-amber-400 font-bold shadow-md'
                     : tab.highlight
-                    ? 'text-amber-300 hover:text-amber-100 bg-amber-950/40 hover:bg-amber-900/40'
+                    ? 'text-amber-200 hover:text-white bg-amber-950/50 hover:bg-amber-900/50 border border-amber-900/40'
                     : 'text-slate-300 hover:text-amber-200 hover:bg-slate-800/40'
                 }`}
               >
-                <div className="flex items-center gap-1 whitespace-nowrap">
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
                   {tab.isHistoryTab ? (
-                    <History className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                    <History className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                   ) : (
-                    tab.highlight && <Sparkles className="w-3 h-3 text-amber-400 flex-shrink-0" />
+                    tab.highlight && <Sparkles className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0" />
                   )}
                   <span>{tab.label}</span>
                 </div>
-                <span className="text-[10px] text-amber-500/75 font-normal whitespace-nowrap">
-                  {tab.hindi}
+                <span className="text-[10px] text-amber-300/80 font-normal whitespace-nowrap mt-0.5">
+                  {tab.sub}
                 </span>
               </button>
             );

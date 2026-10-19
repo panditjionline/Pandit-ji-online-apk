@@ -262,12 +262,17 @@ export default function App() {
   }, []);
 
   const toggleAudio = (freq?: number, mantraText?: string) => {
-    const defaultTrack = SPIRITUAL_TRACKS[0];
-    const status = vedicAudio.toggle(
-      freq || defaultTrack.toneFrequency,
-      mantraText || defaultTrack.shortMantra || defaultTrack.sanskritLyrics
-    );
-    setIsAudioPlaying(status);
+    try {
+      const defaultTrack = SPIRITUAL_TRACKS[0];
+      const status = vedicAudio.toggle(
+        freq || defaultTrack.toneFrequency,
+        mantraText || defaultTrack.shortMantra || defaultTrack.sanskritLyrics
+      );
+      setIsAudioPlaying(status);
+    } catch (err) {
+      console.warn('Audio toggle handled:', err);
+      setIsAudioPlaying(false);
+    }
   };
 
   const openBookingForService = (service: PujaService) => {
@@ -343,7 +348,7 @@ export default function App() {
                       const personalConsult = PUJA_SERVICES.find((s) => s.id === 'kundali-paramarsh');
                       if (personalConsult) openBookingForService(personalConsult);
                     }}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold text-xs sm:text-sm shadow-xl hover:from-yellow-400 hover:to-amber-400 transition-all cursor-pointer whitespace-nowrap"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold text-xs sm:text-sm shadow-xl hover:from-yellow-400 hover:to-amber-400 transition-all cursor-pointer whitespace-nowrap"
                   >
                     परामर्श बुक करें (मात्र ₹100)
                   </button>
@@ -453,6 +458,130 @@ export default function App() {
                     </button>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Quick 6-Feature Visual Access Grid for easy understanding */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm sm:text-base font-bold font-vedic text-amber-200 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-yellow-400" />
+                  <span>पण्डित जी ऑनलाइन — मुख्य सेवाएं एवं सुविधाएं (1-क्लिक एक्सेस)</span>
+                </span>
+                <span className="text-[11px] text-amber-400/80 hidden sm:inline">सरल एवं सुगम</span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('janam-kundali')}
+                  className="p-3 sm:p-4 rounded-2xl bg-gradient-to-b from-amber-950/60 to-slate-900 border border-amber-600/40 hover:border-amber-400 text-left transition-all hover:scale-[1.02] cursor-pointer shadow-md group flex flex-col justify-between"
+                >
+                  <div className="p-2.5 w-fit rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                    <Compass className="w-5 h-5" />
+                  </div>
+                  <div className="mt-2.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-amber-100 group-hover:text-yellow-300">
+                      सम्पूर्ण जन्म कुंडली
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                      लग्न, विंशोत्तरी दशा व उपाय
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('milan')}
+                  className="p-3 sm:p-4 rounded-2xl bg-gradient-to-b from-rose-950/50 to-slate-900 border border-rose-500/40 hover:border-rose-400 text-left transition-all hover:scale-[1.02] cursor-pointer shadow-md group flex flex-col justify-between"
+                >
+                  <div className="p-2.5 w-fit rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 group-hover:bg-rose-500 group-hover:text-slate-950 transition-colors">
+                    <HeartHandshake className="w-5 h-5" />
+                  </div>
+                  <div className="mt-2.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-amber-100 group-hover:text-yellow-300">
+                      36 गुण मिलान
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                      वर-कन्या अष्टकूट व मंगल
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('jaap')}
+                  className="p-3 sm:p-4 rounded-2xl bg-gradient-to-b from-amber-950/60 to-slate-900 border border-amber-500/40 hover:border-amber-400 text-left transition-all hover:scale-[1.02] cursor-pointer shadow-md group flex flex-col justify-between"
+                >
+                  <div className="p-2.5 w-fit rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                    <Flame className="w-5 h-5" />
+                  </div>
+                  <div className="mt-2.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-amber-100 group-hover:text-yellow-300">
+                      108 मंत्र जप माला
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                      घंटी व शंख ध्वनि सहित
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('chat')}
+                  className="p-3 sm:p-4 rounded-2xl bg-gradient-to-b from-indigo-950/60 to-slate-900 border border-indigo-500/40 hover:border-indigo-400 text-left transition-all hover:scale-[1.02] cursor-pointer shadow-md group flex flex-col justify-between"
+                >
+                  <div className="p-2.5 w-fit rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 group-hover:bg-indigo-500 group-hover:text-slate-950 transition-colors">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <div className="mt-2.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-amber-100 group-hover:text-yellow-300">
+                      पण्डित शशांक AI
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                      24x7 ज्योतिष मार्गदर्शन
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedServiceForBooking(null);
+                    setIsBookingModalOpen(true);
+                  }}
+                  className="p-3 sm:p-4 rounded-2xl bg-gradient-to-b from-yellow-950/60 to-slate-900 border border-yellow-500/40 hover:border-yellow-400 text-left transition-all hover:scale-[1.02] cursor-pointer shadow-md group flex flex-col justify-between"
+                >
+                  <div className="p-2.5 w-fit rounded-xl bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 group-hover:bg-yellow-500 group-hover:text-slate-950 transition-colors">
+                    <Tag className="w-5 h-5" />
+                  </div>
+                  <div className="mt-2.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-amber-100 group-hover:text-yellow-300">
+                      पूजा व ₹100 परामर्श
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                      50% छूट एवं WhatsApp
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('youtube')}
+                  className="p-3 sm:p-4 rounded-2xl bg-gradient-to-b from-red-950/50 to-slate-900 border border-red-500/40 hover:border-red-400 text-left transition-all hover:scale-[1.02] cursor-pointer shadow-md group flex flex-col justify-between"
+                >
+                  <div className="p-2.5 w-fit rounded-xl bg-red-500/20 text-red-400 border border-red-500/30 group-hover:bg-red-500 group-hover:text-white transition-colors">
+                    <Youtube className="w-5 h-5 fill-current" />
+                  </div>
+                  <div className="mt-2.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-amber-100 group-hover:text-red-300">
+                      यूट्यूब वीडियो
+                    </h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                      कथा, आरती एवं भजन
+                    </p>
+                  </div>
+                </button>
               </div>
             </div>
 

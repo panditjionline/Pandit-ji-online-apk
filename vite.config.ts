@@ -188,13 +188,10 @@ export default defineConfig(() => {
       },
     },
     server: {
-      hmr: process.env.DISABLE_HMR !== 'true',
-      watch:
-        process.env.DISABLE_HMR === 'true'
-          ? null
-          : {
-              ignored: ['**/users_store.json', '**/bookings_store.json'],
-            },
+      hmr: false,
+      watch: {
+        ignored: ['**/users_store.json', '**/bookings_store.json'],
+      },
     },
   };
 });

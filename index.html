@@ -1,15 +1,24 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="hi" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Pandit ji online | Pandit Shashank Sharma - Vedic Puja & Jyotish</title>
-    <meta name="description" content="Official digital Vedic platform founded by Pandit Shashank Sharma. Providing Vedic rituals, Griha Pravesh, Hawan, Rudrabhishek, and Jyotish consultations in Rudrapur, Uttarakhand and globally online." />
-    <meta property="og:title" content="Pandit ji online | Pandit Shashank Sharma" />
-    <meta property="og:description" content="Authentic Vedic Puja, Hawan, and Jyotish consultations in Rudrapur, Uttarakhand and worldwide." />
+    <title>पण्डित जी ऑनलाइन | आचार्य पण्डित शशांक शर्मा - वैदिक पूजा, सम्पूर्ण कुंडली एवं ज्योतिष</title>
+    <meta name="description" content="आचार्य पण्डित शशांक शर्मा द्वारा संचालित प्रामाणिक वैदिक डिजिटल मंच। रुद्रपुर (उत्तराखण्ड) एवं ऑनलाइन सम्पूर्ण जन्म कुंडली, 36-गुण मिलान, महायज्ञ, गृह प्रवेश एवं ज्योतिष समाधान।" />
+    <meta property="og:title" content="पण्डित जी ऑनलाइन | आचार्य पण्डित शशांक शर्मा" />
+    <meta property="og:description" content="प्रामाणिक वैदिक पूजा, सम्पूर्ण जन्म कुंडली, 36-गुण मिलान, मंत्र साधना एवं ऑनलाइन परामर्श।" />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#FF6F00" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="application-name" content="पण्डित जी ऑनलाइन" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/app-icon.svg" />
+    <link rel="apple-touch-icon" href="/pandit-photo.jpg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,5 +26,12 @@
   <body class="bg-[#0b0f19] text-amber-50 antialiased selection:bg-amber-600/30 selection:text-amber-200">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>
