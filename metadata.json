@@ -1,6 +1,6 @@
 {
   "name": "Pandit ji online",
-  "description": "Official digital Vedic platform founded by Pandit Shashank Sharma. Providing Vedic rituals, Griha Pravesh, Hawan, Rudrabhishek, and Jyotish consultations in Rudrapur, Uttarakhand and globally online.",
+  "description": "Get free Vedic astrology predictions, online kundli matching, 36 gun milan, daily rashifal, and expert astrological remedies at Pandit Ji Online, Rudrapur.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
