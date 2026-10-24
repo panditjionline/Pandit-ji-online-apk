@@ -1,0 +1,25 @@
+# Pandit Ji Online - Autonomous SEO & Indexing Protocol
+# Acharya Pandit Shashank Sharma (Rudrapur, Uttarakhand)
+
+User-agent: *
+Allow: /
+Allow: /googlea0e64484b80e13d1.html
+Allow: /panchang
+Allow: /janam-kundali
+Allow: /kundali-milan
+Allow: /digital-mandir
+Allow: /jyotish-ai
+Allow: /puja-services
+Allow: /dharm-gyan-kosh
+Allow: /mantra-jaap
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Allow: /googlea0e64484b80e13d1.html
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://ais-dev-vzln7mn7lygnkockjoehu3-746834689688.asia-east1.run.app/sitemap.xml

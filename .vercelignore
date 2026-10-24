@@ -1,0 +1,30 @@
+# Vercel Ignore file - Keeps deployments ultra-lightweight (<3MB source)
+
+# Never upload node_modules (Vercel installs dependencies during cloud build)
+node_modules/
+
+# Never upload pre-built dist (Vercel builds its own dist)
+dist/
+dist-ssr/
+.cache/
+.vite/
+
+# Internal AI Studio folders and heavy user-uploaded chat screenshots
+.aistudio/
+public/assets/aistudio/
+*.py
+*.md
+!README.md
+ANDROID_APK_GUIDE.md
+
+# Local state json
+users_store.json
+bookings_store.json
+
+# Local envs
+.env.local
+.env*.local
+
+# Git and OS
+.git/
+.DS_Store

@@ -510,9 +510,14 @@ async function setupFrontend() {
   }
 }
 
-await setupFrontend();
+// When running in Vercel Serverless or test environment, export app without binding port
+if (!process.env.VERCEL) {
+  await setupFrontend();
+  app.listen(port, () => {
+    console.log(`Pandit Ji Online server running on port ${port}`);
+  });
+}
 
-app.listen(port, () => {
-  console.log(`Pandit Ji Online server running on port ${port}`);
-});
+export default app;
+export { app };
 
